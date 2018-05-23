@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vue: Shopping List</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  
+  <div id="app" class="container">
+    <h2>{{ title }}</h2>
+    <div class="input-group">
+      <input v-model="newItem" v-on:keyup.enter="addItem" type="text" placeholder="add new item" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" v-on:click="addItem">Add Item</button>
+      </span>
+    </div>
+    <ul>
+      <li v-for="item in items" v-bind:class= {'removed':item.checked}>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" v-model="item.checked"> {{item.text}}
+          </label>
+        </div>
+      </li>
+    </ul>
+
+    <footer>
+      <hr>
+      <em>Change the title of shopping list</em>
+      <input class="form-control" type="text" v-model="title">
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
